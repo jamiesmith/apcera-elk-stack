@@ -1,5 +1,10 @@
 # The ELK Stack on Apcera
 
+## PREFACE
+
+This was a post that I wrote while at the now defunct Apcera, on the getting ELK
+AKA Elastic Stack up and running on the Apcera platform.
+
 ## Customers Want to Analyze their Data
 
 When working with customers we often hear the same question: "How can I view my
