@@ -16,8 +16,7 @@ something you can use to visualize your output (unless you are *really* good at
 ascii-art graphs).
 
 The ELK Stack to the rescue!
-
-![Dashboard Teaser](/example-elk-stack/readme-images/dashboard-teaser.png "Dashboard Teaser")
+![Dashboard Teaser](/apcera-elk-stack/readme-images/dashboard-teaser.png "Dashboard Teaser")
 
 ## Visualization of Data
 
@@ -66,7 +65,7 @@ omitting it.  If you don't want to follow along you can simply clone the
 accompanying github repo (which may be newer than the article) and move at your
 own pace.  The repo can be found under Apcera's 
 [sample-apps](https://github.com/apcera/sample-apps) (any path references
-in this article will be relative to that `sample-apps/example-elk-stack` base 
+in this article will be relative to that `sample-apps/apcera-elk-stack` base 
 to make it easier to follow along).
 
 ```console
@@ -256,7 +255,7 @@ apc package build elasticsearch-5.0.0.conf
 
 which will create a package that looks like this:    
 
-![Elasticsearch Package](/example-elk-stack/readme-images/elasticsearch-package.png "Elasticsearch Package")
+![Elasticsearch Package](/apcera-elk-stack/readme-images/elasticsearch-package.png "Elasticsearch Package")
 
 #### Deploy the first application
 
@@ -421,7 +420,7 @@ apc package build kibana-5.0.0.conf
 ```
 
 The Kibana package, based on the brand-new 5.0.0 is depicted here:
-![Kibana Package](/example-elk-stack/readme-images/kibana-package.png "Kibana Package")
+![Kibana Package](/apcera-elk-stack/readme-images/kibana-package.png "Kibana Package")
 
 Creating a standalone application instance is a little more complicated than our
 elasticsearch example, because we need to include the job link to elsaticsearch.
@@ -507,12 +506,12 @@ that we can't really do anything with it, yet!).  X-Pack users, make sure that
 you log in using the apcera user's credentials that we defined above,
 `apcera/apcera-password`
 
-![Kibana Login](/example-elk-stack/readme-images/kibana-login.png "Kibana Login")
+![Kibana Login](/apcera-elk-stack/readme-images/kibana-login.png "Kibana Login")
 
 to finally see the landing page - don't worry about the mappings error, we will
 take care of that soon!
 
-![Kibana Interface](/example-elk-stack/readme-images/kibana-interface-no-index.png "Kibana Interface")
+![Kibana Interface](/apcera-elk-stack/readme-images/kibana-interface-no-index.png "Kibana Interface")
 
 ### The Logstash Package
 
@@ -610,7 +609,7 @@ apc package build logstash-5.0.0.conf
 
 Which yields a package that looks similar to:
 
-![Logstash Package](/example-elk-stack/readme-images/logstash-package.png "Logstash Package")
+![Logstash Package](/apcera-elk-stack/readme-images/logstash-package.png "Logstash Package")
 
 ## Pulling the Pieces Together
 
@@ -792,7 +791,7 @@ the [grok debugger](http://grokdebug.herokuapp.com) to help generate our
 format.  Using the tool is pretty straightforward.  Another helpful tool is the
 [Grok Constructor](http://grokconstructor.appspot.com). In our case it looks like:
 
-![Grok Tool](/example-elk-stack/readme-images/grok-debug.png "Grok Tool")
+![Grok Tool](/apcera-elk-stack/readme-images/grok-debug.png "Grok Tool")
 
 with our format as 
 
@@ -1031,18 +1030,18 @@ Once everything is all tied together, we can start to visualize our logs in
 Kibana.  Going back to our kibana browser, we want to register a new
 index. Refresh the page, and you should see that you can now add an index:
 
-![kibana-index](/example-elk-stack/readme-images/kibana-index.png "kibana-index")
+![kibana-index](/apcera-elk-stack/readme-images/kibana-index.png "kibana-index")
 
 then click "create".  Moving to the the _Discover_ tab we can see now records 
 coming (Ok, this assumes that the application has been sending log records- in 
 my case I just reloaded the app's page a few times)
 
-![discover-kibana](/example-elk-stack/readme-images/discover-kibana.png "discover-kibana")
+![discover-kibana](/apcera-elk-stack/readme-images/discover-kibana.png "discover-kibana")
 
 clicking on the disclose arrow next to one of the log entries, we can see that
 the fields we are parsing for are stored as discrete fields:
 
-![Kibana Details](/example-elk-stack/readme-images/discover-details.png "Kibana Details")
+![Kibana Details](/apcera-elk-stack/readme-images/discover-details.png "Kibana Details")
 
 But we can do much more- kibana can be used to create bar charts, graphs, 
 even dashboards.  Let's build a couple visualizations!  
@@ -1053,7 +1052,7 @@ to our app.
 Click on the "visualize" tab on the left side of the screen, then select "Pie
 chart":
 
-![create-pie-chart.png](/example-elk-stack/readme-images/create-pie-chart.png "create-pie-chart.png")
+![create-pie-chart.png](/apcera-elk-stack/readme-images/create-pie-chart.png "create-pie-chart.png")
 
 Select our `logstash-*` index as the source index.  On the next screen, 
 pick the `Split Splices` for the bucket type, and pick a `terms` aggregation.
@@ -1067,12 +1066,12 @@ criteria, and you should see a pie chart.
 > that window, you can increase it.  Click on the clock at the top right, then
 > select a longer window:
 
-![extend-window](/example-elk-stack/readme-images/extend-window.png "extend-window")
+![extend-window](/apcera-elk-stack/readme-images/extend-window.png "extend-window")
 
 Once you get that working you can save the visualization by hitting the "save"
 button in the top banner.  Let's call it "Return Codes":
 
-![save-pie-chart](/example-elk-stack/readme-images/save-pie-chart.png "save-pie-chart")
+![save-pie-chart](/apcera-elk-stack/readme-images/save-pie-chart.png "save-pie-chart")
 Hmmm, I am getting several 304's, I wonder if that is OK.
 
 We went to the trouble of installing that Geo data, we should see what we can
@@ -1081,13 +1080,13 @@ do with that.  How about a map!
 So create another visualization.  Click "new" when on the "Visualize"
 tab, but this time choose the "Tile map":
 
-![create-map](/example-elk-stack/readme-images/create-map.png "create-map")
+![create-map](/apcera-elk-stack/readme-images/create-map.png "create-map")
 
 Again, select the `logstash-*` index. The only bucket type choice that we
 have is Geo Coordinates, so I guess that is the one that we will pick. Select
 the defaults.  We can save that, also:
 
-![save-map](/example-elk-stack/readme-images/save-map.png "save-map")
+![save-map](/apcera-elk-stack/readme-images/save-map.png "save-map")
 
 ### Dashboard
 
@@ -1096,16 +1095,16 @@ No, not the Meatloaf song.  A consolidated view of a system.  Let's make one!
 Click on the "Dashboard" tab in the left toolbar, then click the add button.
 You should be prompted to add visualizations to your dashboard - 
 
-![add-viz-to-dashboard](/example-elk-stack/readme-images/add-viz-to-dashboard.png "add-viz-to-dashboard")
+![add-viz-to-dashboard](/apcera-elk-stack/readme-images/add-viz-to-dashboard.png "add-viz-to-dashboard")
 
 Add both of the ones that we just created.  When they are on the dashboard you
 can resize them:
 
-![viz-can-resize](/example-elk-stack/readme-images/viz-can-resize.png "viz-can-resize")
+![viz-can-resize](/apcera-elk-stack/readme-images/viz-can-resize.png "viz-can-resize")
 
 or edit them:
 
-![viz-can-edit](/example-elk-stack/readme-images/viz-can-edit.png "viz-can-edit")
+![viz-can-edit](/apcera-elk-stack/readme-images/viz-can-edit.png "viz-can-edit")
 
 Make sure to save it so you can use it later!
 
